@@ -8,15 +8,15 @@ class FieldSet extends Component {
     }
 
     render() {
-        const { fields } = this.props.section;
+        const section = this.props.section;
 
-        let inputs = fields.map(input => {
-            return (<Input label={input.label} key={input.key}/>)
+        let fields = section.map(field => {
+            return (<Input label={field.label} key={field.id}/>)
         })
         return (
             <fieldset>
-                <Heading heading={this.props.heading}/>
-                <div>{inputs}</div>
+                <Heading heading={section[0].category}/>
+                <div>{fields}</div>
             </fieldset>
         )
     }

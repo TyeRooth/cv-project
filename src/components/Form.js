@@ -7,10 +7,12 @@ class Form extends Component {
     }
 
     render () {
-        const { personal } = this.props.data;
+        const data = this.props.data;
+        const personal = data.filter(field => field.category = 'Personal Information');
         return (
             <form>
                 <Fieldset section={personal}/>
+                <button>Submit</button>
             </form>
         )
     }

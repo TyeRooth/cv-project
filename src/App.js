@@ -1,4 +1,5 @@
 import React from "react";
+import uniqid from 'uniqid';
 import Form from "./components/Form";
 
 class App extends React.Component {
@@ -33,16 +34,51 @@ class App extends React.Component {
               value: ""
             }
           ]
-        }
+        },
       }
     }
   }
 
   render() {
     return (
-      <Form data={this.state.data}/>
+      <Form data={details}/>
     )
   }
-}
+};
+
+const initPersonalID = uniqid('personal');
+const initEducationID = uniqid('education');
+const initExperienceID = uniqid('experience');
+
+const details = [
+  {
+    category: 'Personal Information',
+    label: 'First Name',
+    value: '',
+    id: uniqid(),
+    catID: initPersonalID,
+  },
+  {
+    category: 'Personal Information',
+    label: 'Last Name',
+    value: '',
+    id: uniqid(),
+    catID: initPersonalID,
+  },
+  {
+    category: 'Personal Information',
+    label: 'Phone Number',
+    value: '',
+    id: uniqid(),
+    catID: initPersonalID,
+  },
+  {
+    category: 'Personal Information',
+    label: 'Email Address',
+    value: '',
+    id: uniqid(),
+    catID: initPersonalID,
+  }
+]
 
 export default App;
