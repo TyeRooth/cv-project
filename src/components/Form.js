@@ -8,10 +8,14 @@ class Form extends Component {
 
     render () {
         const data = this.props.data;
-        const personal = data.filter(field => field.category = 'Personal Information');
+        const personal = data.filter(field => field.category === 'Personal Information');
+        const education = data.filter(field => field.category === 'Education');
+        const experience = data.filter(field => field.category === 'Experience');
         return (
             <form>
                 <Fieldset section={personal}/>
+                <Fieldset section={education}/>
+                <Fieldset section={experience}/>
                 <button>Submit</button>
             </form>
         )

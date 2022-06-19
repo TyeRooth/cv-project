@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Heading from "./Heading";
-import Input from "./Input";
+import EduExpGroup from "./EduExpGroup";
 
 class FieldSet extends Component {
     constructor(props) {
@@ -9,14 +9,28 @@ class FieldSet extends Component {
 
     render() {
         const section = this.props.section;
+        let catSet = new Set();
+        let instances = [];
 
-        let fields = section.map(field => {
-            return (<Input label={field.label} key={field.id}/>)
+        // Determine the total number of different experiences/educations
+        for (let i = 0; i < section.length; i++) {
+            catSet.add(section[i].catID);
+        }
+
+        //Create an array for each case
+        for (let id of catSet) {
+            instances.push(section.filter(group => group.catID === id));
+        }
+
+        // Create a list containing each category group
+        let groups = instances.map(group => {
+            return (<EduExpGroup group={group} key={group[0].catID}/>)
         })
+
         return (
             <fieldset>
                 <Heading heading={section[0].category}/>
-                <div>{fields}</div>
+                <div>{groups}</div>
             </fieldset>
         )
     }
