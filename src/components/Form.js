@@ -11,6 +11,7 @@ class Form extends Component {
         const personal = data.filter(field => field.category === 'Personal Information');
         const education = data.filter(field => field.category === 'Education');
         const experience = data.filter(field => field.category === 'Experience');
+        
         return (
             <form>
                 <Fieldset section={personal}/>
