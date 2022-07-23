@@ -4,6 +4,8 @@ import Fieldset from "./FieldSet";
 class Form extends Component {
     constructor(props) {
         super(props);
+        
+        this.funcs = this.props.funcs
     }
 
     render () {
@@ -15,8 +17,8 @@ class Form extends Component {
         return (
             <form>
                 <Fieldset section={personal}/>
-                <Fieldset section={education}/>
-                <Fieldset section={experience}/>
+                <Fieldset section={education} add={this.funcs.addEdu}/>
+                <Fieldset section={experience} add={this.funcs.addExp}/>
                 <button>Submit</button>
             </form>
         )

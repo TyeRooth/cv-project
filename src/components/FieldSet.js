@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Heading from "./Heading";
 import EduExpGroup from "./EduExpGroup";
+import EduExpButton from "./EduExpButton";
 
 class FieldSet extends Component {
     constructor(props) {
@@ -27,12 +28,23 @@ class FieldSet extends Component {
             return (<EduExpGroup group={group} key={group[0].catID}/>)
         })
 
-        return (
-            <fieldset>
-                <Heading heading={section[0].category}/>
-                <div>{groups}</div>
-            </fieldset>
-        )
+        if (section[0].category === 'Personal Information') {
+            return (
+                <fieldset>
+                    <Heading heading={section[0].category}/>
+                    <div>{groups}</div>
+                </fieldset>
+            )
+        }
+        else {
+            return (
+                <fieldset>
+                    <Heading heading={section[0].category}/>
+                    <div>{groups}</div>
+                    <EduExpButton name="Add" func={this.props.add}/>
+                </fieldset>
+            )
+        }
     }
 }
 
