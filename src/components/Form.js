@@ -24,9 +24,9 @@ class Form extends Component {
         
         return (
             <form>
-                <Fieldset section={personal}/>
-                <Fieldset section={education} add={this.funcs.addEdu} delete={this.funcs.delete}/>
-                <Fieldset section={experience} add={this.funcs.addExp} delete={this.funcs.delete}/>
+                <Fieldset section={personal} changeValue={this.funcs.changeValue}/>
+                <Fieldset section={education} add={this.funcs.addEdu} delete={this.funcs.delete} changeValue={this.funcs.changeValue}/>
+                <Fieldset section={experience} add={this.funcs.addExp} delete={this.funcs.delete} changeValue={this.funcs.changeValue}/>
                 <button>Submit</button>
             </form>
         )

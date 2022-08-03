@@ -7,6 +7,8 @@ import PersonalInfoGroup from "./personalInfoFields";
 class FieldSet extends Component {
     constructor(props) {
         super(props);
+
+        this.changeValue = this.props.changeValue;
     }
 
     render() {
@@ -32,13 +34,11 @@ class FieldSet extends Component {
 
         // Create a list containing each category group
         let groups = instances.map(group => {
-            return (<EduExpGroup group={group} key={group[0].catID} deleteFunc={this.props.delete}/>)
+            return (<EduExpGroup group={group} key={group[0].catID} deleteFunc={this.props.delete} changeValue={this.changeValue}/>)
         })
 
         // Create list for personal information group without delete button
-        let personalInfo = <PersonalInfoGroup group={section}/>
-
-        console.log(this.props.add);
+        let personalInfo = <PersonalInfoGroup group={section} changeValue={this.changeValue}/>
 
         if (heading === 'Personal Information') {
             return (

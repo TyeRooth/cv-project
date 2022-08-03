@@ -8,6 +8,8 @@ class App extends React.Component {
 
     this.addExpGroup = this.addExpGroup.bind(this);
     this.addEduGroup = this.addEduGroup.bind(this);
+    this.deleteGroup = this.deleteGroup.bind(this);
+    this.changeValueEvent = this.changeValueEvent.bind(this);
 
     this.state = {
       submitted: false,
@@ -19,12 +21,26 @@ class App extends React.Component {
     const buttonFuncs = {
       addEdu: this.addEduGroup,
       addExp: this.addExpGroup,
+      delete: this.deleteGroup,
+      changeValue: this.changeValueEvent,
     }
 
     return (
       <Form data={this.state.data} funcs={buttonFuncs}/>
     )
   }
+
+  changeValueEvent (newValue, id) {
+    let updatedData = this.state.data.map(field => {
+      if (field.id === id) {
+        field.value = newValue;
+      }
+      return field;
+    });
+    this.setState({
+      data: updatedData
+    });
+  };
 
   addExpGroup() {
     const groupID = uniqid();
@@ -60,7 +76,17 @@ class App extends React.Component {
     this.setState({
       data: this.state.data.concat(newFields)
     })
-  }  
+  };
+  
+  deleteGroup(catID) {
+    function notInGroupDeleted (group) {
+      return group.catID === catID ? false : true;
+    }
+    const deleted = this.state.data.filter(notInGroupDeleted);
+    this.setState({
+      data: deleted
+    }) 
+  }
 };
 
 // The rest of the code goes into the initial data and form display

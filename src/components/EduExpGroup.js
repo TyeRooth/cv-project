@@ -5,6 +5,8 @@ import Input from './Input';
 class EduExpGroup extends Component {
     constructor(props) {
         super(props);
+
+        this.changeValue = this.props.changeValue;
     };
 
     render() {
@@ -12,7 +14,7 @@ class EduExpGroup extends Component {
 
         // The inputs for each individual experience and education are laid out in thiis list
         let fields = group.map(field => {
-            return (<Input label={field.label} key={field.id}/>)
+            return (<Input label={field.label} key={field.id} id={field.id} changeValue={this.changeValue}/>)
         })
         return (
             <fieldset>

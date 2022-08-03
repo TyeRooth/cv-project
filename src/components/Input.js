@@ -8,7 +8,7 @@ class Input extends Component {
         return (
             <div>
                 <label>{this.props.label}</label>
-                <input></input>
+                <input onChange={(e) => this.props.changeValue(e.target.value, this.props.id)}></input>
             </div>
         )
     }
