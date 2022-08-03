@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EduExpButton from './EduExpButton';
 import Input from './Input';
 
 class EduExpGroup extends Component {
@@ -16,6 +17,7 @@ class EduExpGroup extends Component {
         return (
             <fieldset>
                 <div>{fields}</div>
+                <EduExpButton name="Delete" deleteFunc={this.props.deleteFunc} catID={group[0].catID}/>
             </fieldset>
         )
     };

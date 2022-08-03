@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Heading from "./Heading";
 import EduExpGroup from "./EduExpGroup";
 import EduExpButton from "./EduExpButton";
+import PersonalInfoGroup from "./personalInfoFields";
 
 class FieldSet extends Component {
     constructor(props) {
@@ -9,9 +10,15 @@ class FieldSet extends Component {
     }
 
     render() {
-        const section = this.props.section;
+        let section = this.props.section;
         let catSet = new Set();
         let instances = [];
+
+        // Deals with 0 Edu or Exp groups
+        const heading = section[0].category;
+        if (section.length === 1) {
+            section = [];
+        }
 
         // Determine the total number of different experiences/educations
         for (let i = 0; i < section.length; i++) {
@@ -25,21 +32,26 @@ class FieldSet extends Component {
 
         // Create a list containing each category group
         let groups = instances.map(group => {
-            return (<EduExpGroup group={group} key={group[0].catID}/>)
+            return (<EduExpGroup group={group} key={group[0].catID} deleteFunc={this.props.delete}/>)
         })
 
-        if (section[0].category === 'Personal Information') {
+        // Create list for personal information group without delete button
+        let personalInfo = <PersonalInfoGroup group={section}/>
+
+        console.log(this.props.add);
+
+        if (heading === 'Personal Information') {
             return (
                 <fieldset>
-                    <Heading heading={section[0].category}/>
-                    <div>{groups}</div>
+                    <Heading heading={heading}/>
+                    <div>{personalInfo}</div>
                 </fieldset>
             )
         }
         else {
             return (
                 <fieldset>
-                    <Heading heading={section[0].category}/>
+                    <Heading heading={heading}/>
                     <div>{groups}</div>
                     <EduExpButton name="Add" func={this.props.add}/>
                 </fieldset>
