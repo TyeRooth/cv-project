@@ -1,6 +1,7 @@
 import React from "react";
 import uniqid from 'uniqid';
 import Form from "./components/Form";
+import ProducedCV from "./components/submitted/CvSubmitted";
 
 class App extends React.Component {
   constructor () {
@@ -10,6 +11,8 @@ class App extends React.Component {
     this.addEduGroup = this.addEduGroup.bind(this);
     this.deleteGroup = this.deleteGroup.bind(this);
     this.changeValueEvent = this.changeValueEvent.bind(this);
+    this.changeToForm = this.changeToForm.bind(this);
+    this.changeToPreview = this.changeToPreview.bind(this);
 
     this.state = {
       submitted: false,
@@ -23,12 +26,28 @@ class App extends React.Component {
       addExp: this.addExpGroup,
       delete: this.deleteGroup,
       changeValue: this.changeValueEvent,
+      preview: this.changeToPreview,
     }
 
-    return (
-      <Form data={this.state.data} funcs={buttonFuncs}/>
-    )
+    if (this.state.submitted === false) {
+      return (
+        <Form data={this.state.data} funcs={buttonFuncs}/>
+      )
+    }
+    else {
+      return (
+        <ProducedCV func={this.changeToForm}/>
+      )
+    }
   }
+
+  changeToPreview () {
+    this.setState({submitted: true});
+  };
+
+  changeToForm () {
+    this.setState({submitted: false});
+  };
 
   changeValueEvent (newValue, id) {
     let updatedData = this.state.data.map(field => {

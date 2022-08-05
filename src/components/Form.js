@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Fieldset from "./FieldSet";
+import PreviewButton from "./PreviewButton";
 
 class Form extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class Form extends Component {
                 <Fieldset section={personal} changeValue={this.funcs.changeValue}/>
                 <Fieldset section={education} add={this.funcs.addEdu} delete={this.funcs.delete} changeValue={this.funcs.changeValue}/>
                 <Fieldset section={experience} add={this.funcs.addExp} delete={this.funcs.delete} changeValue={this.funcs.changeValue}/>
-                <button>Submit</button>
+                <PreviewButton func={this.funcs.preview}/>
             </form>
         )
     }
