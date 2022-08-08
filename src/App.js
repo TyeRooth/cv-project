@@ -36,7 +36,7 @@ class App extends React.Component {
     }
     else {
       return (
-        <ProducedCV func={this.changeToForm}/>
+        <ProducedCV func={this.changeToForm} data={this.state.data}/>
       )
     }
   }
