@@ -4,6 +4,7 @@ import PersonalInfoItem from "./PersonalInfoItem";
 import SectionHeading from "./sectionHeading";
 import PreviewSection from "./previewSection";
 import EditCVButton from "./editCVButton";
+import "../../styles/style.css";
 
 class ProducedCV extends Component {
     constructor (props) {
@@ -16,7 +17,7 @@ class ProducedCV extends Component {
     render () {
         const personalInfo = this.parsePersonalInformation();      
         return (
-            <div>
+            <div className="mid-col">
                 <NameHeading fName={personalInfo.fName} lName={personalInfo.lName}/>
                 <PersonalInfoItem info={personalInfo.phone}/>
                 <PersonalInfoItem info={personalInfo.email}/>

@@ -1,0 +1,6 @@
+.mid-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+}

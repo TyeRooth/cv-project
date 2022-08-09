@@ -2,6 +2,7 @@ import React from "react";
 import uniqid from 'uniqid';
 import Form from "./components/Form";
 import ProducedCV from "./components/submitted/CvSubmitted";
+import "./styles/style.css";
 
 class App extends React.Component {
   constructor () {
@@ -36,7 +37,7 @@ class App extends React.Component {
     }
     else {
       return (
-        <ProducedCV func={this.changeToForm} data={this.state.data}/>
+        <ProducedCV func={this.changeToForm} data={this.state.data} className="mid-col"/>
       )
     }
   }
